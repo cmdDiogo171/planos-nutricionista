@@ -70,106 +70,104 @@
         <!-- Ícone do WhatsApp do Font Awesome -->
     </a>
 
-    <div class="main-content">
-        <!-- Container principal: agrupa todo o conteúdo abaixo do header -->
-        
-        <!-- ==================== SEÇÃO 1: PLANOS NUTRICIONAIS ==================== -->
-        <div id="planos" class="section active">
-            <!-- id="planos": identificador único para JavaScript mostrar/esconder -->
-            <!-- class="active": esta seção começa visível -->
+        <div class="main-content">
+            <!-- Container principal: agrupa todo o conteúdo abaixo do header -->
             
-            <div class="hero-section">
-                <!-- Seção de destaque no topo: título + subtítulo -->
+            <!-- ==================== SEÇÃO 1: PLANOS NUTRICIONAIS ==================== -->
+            <div id="planos" class="section active">
+                <!-- id="planos": identificador único para JavaScript mostrar/esconder -->
+                <!-- class="active": esta seção começa visível -->
                 
-                <h1>Planos Nutricionais</h1>
-                <!-- Título principal da página (H1 é o mais importante para SEO) -->
-                
-                <p>Transforme sua saúde com acompanhamento profissional</p>
-                <!-- Subtítulo descritivo -->
+                <div class="hero-section">
+                    <!-- Seção de destaque no topo: título + subtítulo -->
+                    
+                    <h1>Planos Nutricionais</h1>
+                    <!-- Título principal da página (H1 é o mais importante para SEO) -->
+                    
+                    <p>Transforme sua saúde com acompanhamento profissional</p>
+                    <!-- Subtítulo descritivo -->
+                </div>
+
+                <div class="container">
+        <!-- ========== CARD 1: PLANO MENSAL ========== -->
+        <div class="plan">
+            <div class="plan-icon">
+                <i class="fas fa-apple-alt"></i>
             </div>
-
-            <div class="container">
-                <!-- Container dos 3 cards: usa CSS Grid para organizar lado a lado -->
-                
-                <!-- ========== CARD 1: PLANO MENSAL ========== -->
-                <div class="plan">
-                    <!-- Card individual do plano (fundo branco, bordas arredondadas) -->
-                    
-                    <div class="plan-icon">
-                        <!-- Círculo verde no topo do card -->
-                        <i class="fas fa-apple-alt"></i>
-                        <!-- Ícone de maçã -->
-                    </div>
-                    
-                    <h3>Plano Mensal</h3>
-                    <!-- Nome do plano -->
-                    
-                    <div class="price">
-                        R$150
-                    </div>
-                    <!-- Preço em destaque (fonte grande) -->
-                    
-                    <ul class="features">
-                        <!-- Lista de benefícios do plano -->
-                        
-                        <li><i class="fas fa-check-circle"></i> 1 Consulta Completa</li>
-                        <!-- Cada item tem um check verde + texto do benefício -->
-                        
-                        <li><i class="fas fa-check-circle"></i> 1 Retorno Detalhado</li>
-                        <li><i class="fas fa-check-circle"></i> Plano Alimentar Personalizado</li>
-                    </ul>
-                </div>
-
-                <!-- ========== CARD 2: PLANO TRIMESTRAL (DESTAQUE) ========== -->
-                <div class="plan featured">
-                    <!-- CLASSE "featured" ADICIONA O DESTAQUE EM VERDE -->
-                    
-                    <div class="plan-icon">
-                        <i class="fas fa-apple-alt"></i>
-                    </div>
-                    
-                    <h3>Plano Trimestral</h3>
-                    
-                    <div class="price">
-                        R$420
-                        <span class="price-detail">à vista ou 3x R$150</span>
-                        <!-- Detalhes de parcelamento (fonte menor e cinza) -->
-                    </div>
-                    
-                    <ul class="features">
-                        <li><i class="fas fa-check-circle"></i> 2 Consultas Completas</li>
-                        <li><i class="fas fa-check-circle"></i> 3 Retornos Detalhados</li>
-                        <li><i class="fas fa-check-circle"></i> Plano Alimentar Personalizado</li>
-                        <li><i class="fas fa-check-circle"></i> Revisão do plano alimentar</li>
-                        <li><i class="fas fa-check-circle"></i> Suporte WhatsApp horário comercial</li>
-                    </ul>
-                </div>
-
-                <!-- ========== CARD 3: PLANO SEMESTRAL ========== -->
-                <div class="plan">
-                    <div class="plan-icon">
-                        <i class="fas fa-apple-alt"></i>
-                    </div>
-                    
-                    <h3>Plano Semestral</h3>
-                    
-                    <div class="price">
-                        R$780
-                        <span class="price-detail">à vista ou 6x R$135</span>
-                    </div>
-                    
-                    <ul class="features">
-                        <li><i class="fas fa-check-circle"></i> 5 Consultas Completas</li>
-                        <li><i class="fas fa-check-circle"></i> 6 Retornos Detalhados</li>
-                        <li><i class="fas fa-check-circle"></i> Plano Alimentar Personalizado</li>
-                        <li><i class="fas fa-check-circle"></i> Revisão do plano alimentar</li>
-                        <li><i class="fas fa-check-circle"></i> Reavaliações Periódicas</li>
-                        <li><i class="fas fa-check-circle"></i> Material Exclusivo</li>
-                        <li><i class="fas fa-check-circle"></i> Suporte WhatsApp horário comercial</li>
-                    </ul>
-                </div>
+            
+            <h3>Plano Mensal</h3>
+            
+            <div class="price">
+                R$150
             </div>
-            <!-- Fim do container dos planos -->
+            
+            <ul class="features">
+                <!-- BENEFÍCIOS INCLUÍDOS -->
+                <li><i class="fas fa-check-circle"></i> 1 Consulta Completa</li>
+                <li><i class="fas fa-check-circle"></i> 1 Retorno Detalhado</li>
+                <li><i class="fas fa-check-circle"></i> Plano Alimentar Personalizado</li>
+                
+                <!-- BENEFÍCIOS NÃO INCLUÍDOS (riscados e transparentes) -->
+                <li class="unavailable"><i class="fas fa-times-circle"></i> Revisão do plano alimentar</li>
+                <li class="unavailable"><i class="fas fa-times-circle"></i> Reavaliações Periódicas</li>
+                <li class="unavailable"><i class="fas fa-times-circle"></i> Material Exclusivo</li>
+                <li class="unavailable"><i class="fas fa-times-circle"></i> Suporte WhatsApp horário comercial</li>
+            </ul>
+        </div>
+
+        <!-- ========== CARD 2: PLANO TRIMESTRAL (DESTAQUE) ========== -->
+        <div class="plan featured">
+            <div class="plan-icon">
+                <i class="fas fa-apple-alt"></i>
+            </div>
+            
+            <h3>Plano Trimestral</h3>
+            
+            <div class="price">
+                R$420
+                <span class="price-detail">à vista ou 3x R$150</span>
+            </div>
+            
+            <ul class="features">
+                <!-- BENEFÍCIOS INCLUÍDOS -->
+                <li><i class="fas fa-check-circle"></i> 2 Consultas Completas</li>
+                <li><i class="fas fa-check-circle"></i> 3 Retornos Detalhados</li>
+                <li><i class="fas fa-check-circle"></i> Plano Alimentar Personalizado</li>
+                <li><i class="fas fa-check-circle"></i> Revisão do plano alimentar</li>
+                <li><i class="fas fa-check-circle"></i> Suporte WhatsApp horário comercial</li>
+                
+                <!-- BENEFÍCIOS NÃO INCLUÍDOS -->
+                <li class="unavailable"><i class="fas fa-times-circle"></i> Reavaliações Periódicas</li>
+                <li class="unavailable"><i class="fas fa-times-circle"></i> Material Exclusivo</li>
+            </ul>
+        </div>
+
+        <!-- ========== CARD 3: PLANO SEMESTRAL ========== -->
+        <div class="plan">
+            <div class="plan-icon">
+                <i class="fas fa-apple-alt"></i>
+            </div>
+            
+            <h3>Plano Semestral</h3>
+            
+            <div class="price">
+                R$780
+                <span class="price-detail">à vista ou 6x R$135</span>
+            </div>
+            
+            <ul class="features">
+                <!-- TODOS OS BENEFÍCIOS INCLUÍDOS -->
+                <li><i class="fas fa-check-circle"></i> 5 Consultas Completas</li>
+                <li><i class="fas fa-check-circle"></i> 6 Retornos Detalhados</li>
+                <li><i class="fas fa-check-circle"></i> Plano Alimentar Personalizado</li>
+                <li><i class="fas fa-check-circle"></i> Revisão do plano alimentar</li>
+                <li><i class="fas fa-check-circle"></i> Reavaliações Periódicas</li>
+                <li><i class="fas fa-check-circle"></i> Material Exclusivo</li>
+                <li><i class="fas fa-check-circle"></i> Suporte WhatsApp horário comercial</li>
+            </ul>
+        </div>
+    </div>
+
 
             <!-- ========== RODAPÉ: INFORMAÇÕES GOOGLE MEET ========== -->
             <div class="footer">

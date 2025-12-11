@@ -626,6 +626,29 @@ header nav a.active::after {
     min-width: 20px;
     /* Garante largura mínima para alinhamento */
 }
+/* ==================== BENEFÍCIOS NÃO INCLUÍDOS ==================== */
+.features li.unavailable {
+    /* Itens que NÃO estão incluídos no plano */
+    
+    opacity: 0.4;
+    /* 40% de opacidade = bem transparente */
+    
+    text-decoration: line-through;
+    /* Texto riscado */
+    
+    color: #9e9e9e;
+    /* Cinza médio */
+}
+
+.features li.unavailable i {
+    /* Ícone X vermelho nos itens não incluídos */
+    
+    color: #f44336;
+    /* Vermelho */
+    
+    opacity: 0.6;
+    /* Um pouco transparente */
+}
 
 /* ==================== RODAPÉ GOOGLE MEET ==================== */
 .footer {
