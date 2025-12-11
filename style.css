@@ -721,6 +721,55 @@ header nav a.active::after {
     margin-right: 8px;
 }
 
+/* ==================== NÚMERO DE TELEFONE CLICÁVEL ==================== */
+.phone-number {
+    /* Link do telefone no rodapé */
+    
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    /* Espaço entre ícone e número */
+    
+    margin-top: 20px;
+    padding: 15px 25px;
+    
+    background: linear-gradient(135deg, #4CAF50, #66BB6A);
+    /* Gradiente verde */
+    
+    color: white;
+    font-size: 1.1em;
+    font-weight: 600;
+    
+    border-radius: 15px;
+    text-decoration: none;
+    
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+    /* Sombra verde */
+    
+    transition: all 0.3s ease;
+    
+    border: 2px solid transparent;
+}
+
+.phone-number:hover {
+    /* Quando passa o mouse */
+    
+    background: linear-gradient(135deg, #66BB6A, #4CAF50);
+    /* Inverte o gradiente */
+    
+    transform: scale(1.05);
+    /* Aumenta um pouco */
+    
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+    /* Sombra maior */
+}
+
+.phone-number i {
+    /* Ícone do telefone */
+    font-size: 1.2em;
+}
+
+
 /* ==================== BOTÃO WHATSAPP FLUTUANTE ==================== */
 .whatsapp-button {
     position: fixed;
