@@ -1,612 +1,141 @@
 <!DOCTYPE html>
+<!-- Declara que este é um documento HTML5 -->
+
 <html lang="pt-BR">
+<!-- Inicia o HTML e define o idioma como português do Brasil -->
+
 <head>
+    <!-- ÁREA DE CONFIGURAÇÕES DO SITE (não aparece na tela) -->
+    
     <meta charset="UTF-8">
+    <!-- Define a codificação de caracteres para permitir acentos (á, ç, ã, etc) -->
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Torna o site responsivo: adapta a largura para celular/tablet/desktop -->
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Importa a biblioteca Font Awesome: fornece os ícones (check, whatsapp, video, etc) -->
+    
+    <link rel="stylesheet" href="style.css">
+    <!-- Conecta o arquivo de estilos CSS (cores, fontes, layout) -->
+    
     <title>Planos Nutricionista - Mayara Ribeiro</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            min-height: 100vh;
-            padding: 0;
-        }
-
-        /* Padrão de fundo decorativo suave */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(circle at 20% 50%, rgba(76, 175, 80, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(33, 150, 243, 0.05) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* Ícones decorativos do Google Meet no fundo */
-        body::after {
-            content: '📹 📹 📹 📹 📹';
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 8em;
-            opacity: 0.02;
-            letter-spacing: 150px;
-            line-height: 250px;
-            pointer-events: none;
-            z-index: 0;
-            white-space: nowrap;
-        }
-
-        /* ---------------- CABEÇALHO ---------------- */
-        header {
-            width: 100%;
-            background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
-            padding: 20px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: #fff;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 100;
-        }
-
-        /* LOGO PROFISSIONAL */
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            cursor: pointer;
-        }
-
-        .logo-icon {
-            width: 50px;
-            height: 50px;
-            background: white;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-        }
-
-        .logo-icon::before {
-            content: 'MR';
-            font-size: 1.4em;
-            font-weight: 700;
-            color: #4CAF50;
-            letter-spacing: -2px;
-        }
-
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.2;
-        }
-
-        .logo-text .name {
-            font-size: 1.4em;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        .logo-text .subtitle {
-            font-size: 0.85em;
-            font-weight: 400;
-            opacity: 0.9;
-            letter-spacing: 1px;
-        }
-
-        header nav {
-            display: flex;
-            gap: 30px;
-        }
-
-        header nav a {
-            color: #fff;
-            font-size: 1.05em;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            position: relative;
-            cursor: pointer;
-        }
-
-        header nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #FFF59D;
-            transition: width 0.3s ease;
-        }
-
-        header nav a:hover::after {
-            width: 100%;
-        }
-
-        header nav a.active::after {
-            width: 100%;
-        }
-
-        /* ------------ CONTAINER PRINCIPAL ------------ */
-        .main-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-top: 120px;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Ocultar seções */
-        .section {
-            display: none;
-            animation: fadeIn 0.5s ease;
-            width: 100%;
-        }
-
-        .section.active {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero-section {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .hero-section h1 {
-            font-size: 3em;
-            color: #2c3e50;
-            margin-bottom: 15px;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .hero-section p {
-            font-size: 1.3em;
-            color: #546e7a;
-            font-weight: 400;
-        }
-
-        /* ------------ SEÇÃO QUEM SOU EU ATUALIZADA ------------ */
-        .about-section {
-            max-width: 900px;
-            padding: 50px 60px;
-            margin: 30px auto 60px;
-            background: #FFFFFF;
-            border-radius: 25px;
-            border: 2px solid #e0e0e0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            text-align: center;
-        }
-
-        .about-section h2 {
-            font-size: 2.5em;
-            color: #2c3e50;
-            margin-bottom: 40px;
-            font-weight: 700;
-        }
-
-        .about-section h2 i {
-            color: #4CAF50;
-            margin-right: 10px;
-        }
-
-        .about-text {
-            font-size: 1.1em;
-            color: #546e7a;
-            line-height: 1.9;
-            text-align: justify;
-            margin-bottom: 25px;
-        }
-
-        .about-text strong {
-            color: #2c3e50;
-            font-weight: 600;
-        }
-
-        .about-highlight {
-            background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
-            padding: 30px;
-            border-radius: 15px;
-            margin-top: 40px;
-        }
-
-        .about-highlight h3 {
-            color: #2E7D32;
-            font-size: 1.5em;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-
-        .about-stats {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-top: 25px;
-        }
-
-        .stat-item {
-            background: white;
-            padding: 15px 25px;
-            border-radius: 15px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-
-        .stat-item i {
-            color: #4CAF50;
-            font-size: 1.3em;
-            margin-right: 10px;
-        }
-
-        .stat-item span {
-            color: #2E7D32;
-            font-weight: 600;
-            font-size: 1.05em;
-        }
-
-        /* ------------ PLANOS ------------ */
-        .container {
-            max-width: 1200px;
-            padding: 30px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-            width: 100%;
-        }
-
-        .plan {
-            background: #FFFFFF;
-            padding: 35px 30px;
-            border-radius: 25px;
-            border: 2px solid #e0e0e0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .plan::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #4CAF50, #2196F3);
-        }
-
-        .plan:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
-            border-color: #4CAF50;
-        }
-
-        .plan-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #4CAF50, #66BB6A);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 2em;
-            color: white;
-            box-shadow: 0 5px 20px rgba(76, 175, 80, 0.25);
-        }
-
-        .plan h3 {
-            font-size: 1.9em;
-            margin-bottom: 15px;
-            color: #2c3e50;
-            font-weight: 700;
-            text-align: center;
-        }
-
-        .price {
-            font-size: 2.2em;
-            font-weight: 700;
-            margin: 20px 0;
-            color: #2c3e50;
-            text-align: center;
-        }
-
-        .price-detail {
-            font-size: 0.5em;
-            color: #757575;
-            font-weight: 400;
-            display: block;
-            margin-top: 5px;
-        }
-
-        .features {
-            list-style: none;
-            margin-top: 25px;
-        }
-
-        .features li {
-            padding: 12px 0;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            font-size: 1.05em;
-            color: #546e7a;
-        }
-
-        .features li i {
-            color: #4CAF50;
-            font-size: 1.2em;
-            min-width: 20px;
-        }
-
-        /* RODAPÉ COM GOOGLE MEET - CENTRALIZADO */
-        .footer {
-            text-align: center;
-            padding: 40px 30px;
-            margin: 30px auto 60px;
-            background: #FFFFFF;
-            border-radius: 20px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
-            max-width: 600px;
-            position: relative;
-            z-index: 1;
-            border: 2px solid #e0e0e0;
-        }
-
-        .footer .meet-info {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
-        .footer .meet-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #2196F3, #42A5F5);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5em;
-            color: white;
-            box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
-        }
-
-        .footer h3 {
-            color: #2c3e50;
-            font-size: 1.5em;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .footer p {
-            color: #546e7a;
-            font-size: 1.1em;
-            line-height: 1.6;
-        }
-
-        .footer .contact-info {
-            margin-top: 20px;
-            color: #546e7a;
-            font-size: 1.05em;
-            font-weight: 500;
-        }
-
-        .footer .contact-info i {
-            color: #4CAF50;
-            margin-right: 8px;
-        }
-
-        /* BOTÃO WHATSAPP */
-        .whatsapp-button {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 999;
-            background: #25D366;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-            transition: all 0.3s ease;
-            animation: pulse 2s infinite;
-            text-decoration: none;
-            border: none;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-                box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-            }
-            50% {
-                transform: scale(1.05);
-                box-shadow: 0 8px 35px rgba(37, 211, 102, 0.6);
-            }
-        }
-
-        .whatsapp-button:hover {
-            transform: scale(1.15);
-            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.6);
-        }
-
-        .whatsapp-button i {
-            color: white;
-            font-size: 38px;
-            line-height: 1;
-        }
-
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                padding: 15px 20px;
-                gap: 15px;
-            }
-
-            .logo {
-                gap: 12px;
-            }
-
-            .logo-icon {
-                width: 45px;
-                height: 45px;
-            }
-
-            .logo-icon::before {
-                font-size: 1.2em;
-            }
-
-            .logo-text .name {
-                font-size: 1.2em;
-            }
-
-            .logo-text .subtitle {
-                font-size: 0.8em;
-            }
-
-            header nav {
-                gap: 15px;
-            }
-
-            .hero-section h1 {
-                font-size: 2em;
-            }
-
-            .container {
-                grid-template-columns: 1fr;
-                padding: 20px;
-            }
-
-            .about-section {
-                margin: 20px;
-                padding: 30px 25px;
-            }
-
-            .about-text {
-                text-align: left;
-                font-size: 1.05em;
-            }
-
-            .about-stats {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            body::after {
-                font-size: 4em;
-                letter-spacing: 80px;
-                line-height: 150px;
-            }
-
-            .footer {
-                margin: 20px;
-            }
-        }
-    </style>
+    <!-- Título que aparece na aba do navegador -->
 </head>
 
 <body>
+    <!-- INÍCIO DO CONTEÚDO VISÍVEL DO SITE -->
 
-    <!-- CABEÇALHO -->
+    <!-- ==================== CABEÇALHO FIXO NO TOPO ==================== -->
     <header>
+        <!-- Barra verde que fica sempre no topo da página -->
+        
         <div class="logo" onclick="showSection('planos')">
+            <!-- Logo clicável: ao clicar volta para a seção de planos -->
+            
             <div class="logo-icon"></div>
+            <!-- Caixa vazia: o CSS adiciona as letras "MR" automaticamente -->
+            
             <div class="logo-text">
+                <!-- Container para o texto da logo -->
+                
                 <div class="name">Mayara Ribeiro</div>
+                <!-- Nome da nutricionista (fonte grande e negrito) -->
+                
                 <div class="subtitle">NUTRICIONISTA</div>
+                <!-- Subtítulo com a profissão (fonte menor) -->
             </div>
         </div>
+        
         <nav>
+            <!-- Menu de navegação com os links -->
+            
             <a onclick="showSection('planos')" class="active">Planos</a>
+            <!-- Link "Planos": class="active" marca como ativo (sublinhado amarelo) -->
+            
             <a onclick="showSection('quem-sou-eu')">Quem sou eu</a>
+            <!-- Link "Quem sou eu": ao clicar mostra a seção de biografia -->
         </nav>
     </header>
 
-    <!-- BOTÃO WHATSAPP -->
-    <a href="https://api.whatsapp.com/send?phone=5521990122092&text=Ol%C3%A1%2C%20gostaria%20de%20selecionar%20um%20dos%20planos" target="_blank" class="whatsapp-button">
+    <!-- ==================== BOTÃO WHATSAPP FLUTUANTE ==================== -->
+    <a href="https://api.whatsapp.com/send?phone=5521990122092&text=Ol%C3%A1%2C%20gostaria%20de%20selecionar%20um%20dos%20planos" 
+       target="_blank" 
+       class="whatsapp-button">
+        <!-- Botão verde fixo no canto inferior direito -->
+        <!-- href: abre o WhatsApp com número e mensagem pré-pronta -->
+        <!-- target="_blank": abre em nova aba -->
+        
         <i class="fab fa-whatsapp"></i>
+        <!-- Ícone do WhatsApp do Font Awesome -->
     </a>
 
     <div class="main-content">
+        <!-- Container principal: agrupa todo o conteúdo abaixo do header -->
         
-        <!-- SEÇÃO PLANOS -->
+        <!-- ==================== SEÇÃO 1: PLANOS NUTRICIONAIS ==================== -->
         <div id="planos" class="section active">
+            <!-- id="planos": identificador único para JavaScript mostrar/esconder -->
+            <!-- class="active": esta seção começa visível -->
+            
             <div class="hero-section">
+                <!-- Seção de destaque no topo: título + subtítulo -->
+                
                 <h1>Planos Nutricionais</h1>
+                <!-- Título principal da página (H1 é o mais importante para SEO) -->
+                
                 <p>Transforme sua saúde com acompanhamento profissional</p>
+                <!-- Subtítulo descritivo -->
             </div>
 
             <div class="container">
+                <!-- Container dos 3 cards: usa CSS Grid para organizar lado a lado -->
+                
+                <!-- ========== CARD 1: PLANO MENSAL ========== -->
                 <div class="plan">
+                    <!-- Card individual do plano (fundo branco, bordas arredondadas) -->
+                    
                     <div class="plan-icon">
+                        <!-- Círculo verde no topo do card -->
                         <i class="fas fa-apple-alt"></i>
+                        <!-- Ícone de maçã -->
                     </div>
+                    
                     <h3>Plano Mensal</h3>
+                    <!-- Nome do plano -->
+                    
                     <div class="price">
                         R$150
                     </div>
+                    <!-- Preço em destaque (fonte grande) -->
+                    
                     <ul class="features">
+                        <!-- Lista de benefícios do plano -->
+                        
                         <li><i class="fas fa-check-circle"></i> 1 Consulta Completa</li>
+                        <!-- Cada item tem um check verde + texto do benefício -->
+                        
                         <li><i class="fas fa-check-circle"></i> 1 Retorno Detalhado</li>
                         <li><i class="fas fa-check-circle"></i> Plano Alimentar Personalizado</li>
                     </ul>
                 </div>
 
-                <div class="plan">
+                <!-- ========== CARD 2: PLANO TRIMESTRAL (DESTAQUE) ========== -->
+                <div class="plan featured">
+                    <!-- CLASSE "featured" ADICIONA O DESTAQUE EM VERDE -->
+                    
                     <div class="plan-icon">
                         <i class="fas fa-apple-alt"></i>
                     </div>
+                    
                     <h3>Plano Trimestral</h3>
+                    
                     <div class="price">
                         R$420
                         <span class="price-detail">à vista ou 3x R$150</span>
+                        <!-- Detalhes de parcelamento (fonte menor e cinza) -->
                     </div>
+                    
                     <ul class="features">
                         <li><i class="fas fa-check-circle"></i> 2 Consultas Completas</li>
                         <li><i class="fas fa-check-circle"></i> 3 Retornos Detalhados</li>
@@ -616,15 +145,19 @@
                     </ul>
                 </div>
 
+                <!-- ========== CARD 3: PLANO SEMESTRAL ========== -->
                 <div class="plan">
                     <div class="plan-icon">
                         <i class="fas fa-apple-alt"></i>
                     </div>
+                    
                     <h3>Plano Semestral</h3>
+                    
                     <div class="price">
                         R$780
                         <span class="price-detail">à vista ou 6x R$135</span>
                     </div>
+                    
                     <ul class="features">
                         <li><i class="fas fa-check-circle"></i> 5 Consultas Completas</li>
                         <li><i class="fas fa-check-circle"></i> 6 Retornos Detalhados</li>
@@ -636,91 +169,110 @@
                     </ul>
                 </div>
             </div>
+            <!-- Fim do container dos planos -->
 
+            <!-- ========== RODAPÉ: INFORMAÇÕES GOOGLE MEET ========== -->
             <div class="footer">
+                <!-- Seção de informações sobre atendimento online -->
+                
                 <div class="meet-info">
+                    <!-- Container do ícone + título -->
+                    
                     <div class="meet-icon">
+                        <!-- Quadrado azul com ícone de câmera -->
                         <i class="fas fa-video"></i>
                     </div>
+                    
                     <h3>Atendimento 100% Online</h3>
+                    <!-- Título do serviço -->
                 </div>
+                
                 <p>Todas as consultas são realizadas por <strong>Google Meet</strong> no conforto da sua casa</p>
+                <!-- Descrição (strong deixa "Google Meet" em negrito) -->
+                
                 <div class="contact-info">
+                    <!-- Informação de contato -->
                     <i class="fas fa-phone-alt"></i> Entre em contato para mais informações
                 </div>
             </div>
         </div>
+        <!-- FIM DA SEÇÃO PLANOS -->
 
-        <!-- SEÇÃO QUEM SOU EU -->
+        <!-- ==================== SEÇÃO 2: QUEM SOU EU ==================== -->
         <div id="quem-sou-eu" class="section">
+            <!-- Esta seção começa ESCONDIDA (sem class="active") -->
+            <!-- JavaScript adiciona "active" quando clica no menu -->
+            
             <div class="about-section">
-                <h2><i class="fas fa-user-md"></i> Quem sou eu</h2>
+                <!-- Container da biografia -->
                 
+                <h2><i class="fas fa-user-md"></i> Quem sou eu</h2>
+                <!-- Título com ícone de médico -->
+                
+                <!-- ========== PARÁGRAFO 1 ========== -->
                 <div class="about-text">
                     <p>Sou <strong>Mayara Ribeiro</strong>, nutricionista formada pela <strong>Universidade do Estado do Rio de Janeiro (UERJ)</strong>, comprometida em promover saúde e bem-estar por meio de uma alimentação prática, acessível e individualizada. Acredito em hábitos sustentáveis, construídos sem restrições extremas e sempre respeitando a rotina, a cultura alimentar e as necessidades de cada pessoa.</p>
+                    <!-- strong: destaca palavras importantes em negrito -->
                 </div>
 
+                <!-- ========== PARÁGRAFO 2 ========== -->
                 <div class="about-text">
                     <p>Minha trajetória reúne experiências diversas e complementares dentro da Nutrição. Participei da <strong>Inserção de Práticas Promotoras de Alimentação Saudável no ambulatório de cardiologia da Policlínica Piquet Carneiro</strong>, contribuindo para a orientação de pacientes em contexto cardiometabólico. Atuei também na <strong>vigilância sanitária pelo IVISA-Rio</strong>, no <strong>restaurante universitário da UERJ</strong> na área de alimentação coletiva e na <strong>Clínica da Família Izabel dos Santos</strong>, fortalecendo minha vivência em saúde pública e cuidado integral.</p>
                 </div>
 
+                <!-- ========== PARÁGRAFO 3 ========== -->
                 <div class="about-text">
                     <p>Durante dois anos integrei o <strong>laboratório LEING da UERJ</strong>, desenvolvendo iniciação científica em nutrição clínica com foco em saúde hepática. Nesse período, conduzi uma pesquisa que investigou o impacto do consumo de óleo de palma interesterificado no desenvolvimento da doença hepática gordurosa metabólica — estudo relevante para compreender os efeitos da substituição da gordura trans por esse tipo de óleo. Esse trabalho resultou na <strong>publicação de três artigos científicos</strong>.</p>
                 </div>
 
+                <!-- ========== PARÁGRAFO 4 ========== -->
                 <div class="about-text">
                     <p>Minha prática é guiada por evidências, sensibilidade e respeito à individualidade. Meu objetivo é ajudar você a construir uma relação mais equilibrada, consistente e prazerosa com a alimentação, alcançando resultados reais e duradouros.</p>
                 </div>
 
+                <!-- ========== CAIXA DE DESTAQUE: ESTATÍSTICAS ========== -->
                 <div class="about-highlight">
+                    <!-- Caixa verde clara com informações resumidas -->
+                    
                     <h3>Formação e Experiência</h3>
+                    
                     <div class="about-stats">
+                        <!-- Container dos 4 cards de estatísticas -->
+                        
                         <div class="stat-item">
+                            <!-- Card individual (fundo branco) -->
                             <i class="fas fa-graduation-cap"></i>
+                            <!-- Ícone de capelo de formatura -->
                             <span>Nutricionista UERJ</span>
                         </div>
+                        
                         <div class="stat-item">
                             <i class="fas fa-microscope"></i>
+                            <!-- Ícone de microscópio -->
                             <span>2 anos de pesquisa científica</span>
                         </div>
+                        
                         <div class="stat-item">
                             <i class="fas fa-file-alt"></i>
+                            <!-- Ícone de documento -->
                             <span>3 artigos publicados</span>
                         </div>
+                        
                         <div class="stat-item">
                             <i class="fas fa-hospital"></i>
+                            <!-- Ícone de hospital -->
                             <span>5 estágios especializados</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- FIM DA SEÇÃO QUEM SOU EU -->
 
     </div>
+    <!-- FIM DO MAIN-CONTENT -->
 
-    <script>
-        function showSection(sectionId) {
-            // Remove active de todas as seções
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.remove('active');
-            });
-
-            // Remove active de todos os links do menu
-            document.querySelectorAll('header nav a').forEach(link => {
-                link.classList.remove('active');
-            });
-
-            // Adiciona active na seção clicada
-            document.getElementById(sectionId).classList.add('active');
-
-            // Adiciona active no link clicado
-            if (event.target.tagName === 'A') {
-                event.target.classList.add('active');
-            }
-
-            // Scroll para o topo
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    </script>
+    <script src="script.js"></script>
+    <!-- Conecta o arquivo JavaScript: adiciona interatividade (trocar de seção) -->
 </body>
 </html>

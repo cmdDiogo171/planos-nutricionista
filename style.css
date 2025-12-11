@@ -1,0 +1,848 @@
+/* ==================== IMPORTAÇÃO DE FONTE ==================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+/* Importa a fonte Poppins do Google Fonts em 4 pesos diferentes (300, 400, 600, 700) */
+
+/* ==================== RESET GLOBAL ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Remove margens e espaçamentos padrão de TODOS os elementos */
+/* box-sizing: border-box faz a largura incluir padding e border */
+
+html {
+    scroll-behavior: smooth;
+}
+/* Faz a rolagem da página ser suave ao clicar em links */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    /* Define Poppins como fonte padrão; se não carregar, usa sans-serif genérica */
+    
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    /* Gradiente de fundo: do cinza claro (#f8f9fa) ao cinza médio (#e9ecef) */
+    /* 135deg = diagonal de cima-esquerda para baixo-direita */
+    
+    min-height: 100vh;
+    /* Altura mínima de 100vh = 100% da altura da janela do navegador */
+    
+    padding: 0;
+}
+
+/* ==================== DECORAÇÕES DE FUNDO ==================== */
+body::before {
+    /* ::before cria um elemento ANTES do conteúdo do body */
+    
+    content: '';
+    /* Conteúdo vazio (necessário para ::before funcionar) */
+    
+    position: fixed;
+    /* Fica fixo na tela mesmo quando rola a página */
+    
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Cobre toda a tela */
+    
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(76, 175, 80, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(33, 150, 243, 0.05) 0%, transparent 50%);
+    /* Dois círculos desfocados: um verde (esquerda) e um azul (direita) */
+    /* rgba com 0.05 = 5% de opacidade (bem transparente) */
+    
+    pointer-events: none;
+    /* Permite clicar "através" deste elemento */
+    
+    z-index: 0;
+    /* Fica atrás de tudo (z-index mais baixo) */
+}
+
+body::after {
+    /* ::after cria um elemento DEPOIS do conteúdo do body */
+    
+    content: '📹 📹 📹 📹 📹';
+    /* Emojis de câmera repetidos como marca d'água */
+    
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Centraliza perfeitamente no meio da tela */
+    
+    font-size: 8em;
+    /* Tamanho gigante */
+    
+    opacity: 0.02;
+    /* 2% de opacidade = quase invisível (marca d'água sutil) */
+    
+    letter-spacing: 150px;
+    /* Espaço horizontal entre cada emoji */
+    
+    line-height: 250px;
+    /* Espaço vertical entre linhas */
+    
+    pointer-events: none;
+    /* Não interfere em cliques */
+    
+    z-index: 0;
+    white-space: nowrap;
+    /* Não quebra em múltiplas linhas */
+}
+
+/* ==================== CABEÇALHO FIXO ==================== */
+header {
+    width: 100%;
+    
+    background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+    /* Gradiente verde: do escuro (#4CAF50) ao claro (#66BB6A) */
+    
+    padding: 20px 40px;
+    /* Espaço interno: 20px em cima/baixo, 40px nas laterais */
+    
+    display: flex;
+    /* Usa flexbox para organizar logo e menu lado a lado */
+    
+    justify-content: space-between;
+    /* Logo à esquerda, menu à direita */
+    
+    align-items: center;
+    /* Alinha verticalmente no centro */
+    
+    color: #fff;
+    /* Texto branco */
+    
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    /* Sombra embaixo: desfoque de 20px, cor preta com 10% de opacidade */
+    
+    position: fixed;
+    /* Fica fixo no topo mesmo quando rola a página */
+    
+    top: 0;
+    left: 0;
+    
+    z-index: 100;
+    /* Fica acima de quase tudo (z-index alto) */
+}
+
+/* ==================== LOGO ==================== */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    /* Espaço de 15px entre o ícone e o texto */
+    
+    cursor: pointer;
+    /* Mostra mãozinha ao passar o mouse */
+}
+
+.logo-icon {
+    width: 50px;
+    height: 50px;
+    
+    background: white;
+    /* Fundo branco */
+    
+    border-radius: 12px;
+    /* Cantos arredondados */
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Centraliza o conteúdo (as letras MR) */
+    
+    position: relative;
+    
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    /* Sombra ao redor do quadrado */
+}
+
+.logo-icon::before {
+    /* ::before adiciona conteúdo ANTES do elemento */
+    
+    content: 'MR';
+    /* Texto que aparece: as iniciais */
+    
+    font-size: 1.4em;
+    font-weight: 700;
+    /* Negrito pesado */
+    
+    color: #4CAF50;
+    /* Verde */
+    
+    letter-spacing: -2px;
+    /* Junta as letras (espaço negativo) */
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    /* Organiza nome e subtítulo um embaixo do outro */
+    
+    line-height: 1.2;
+    /* Espaçamento entre linhas */
+}
+
+.logo-text .name {
+    font-size: 1.4em;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    /* Espaço pequeno entre letras */
+}
+
+.logo-text .subtitle {
+    font-size: 0.85em;
+    /* Menor que o nome */
+    
+    font-weight: 400;
+    /* Peso normal */
+    
+    opacity: 0.9;
+    /* 90% de opacidade (levemente transparente) */
+    
+    letter-spacing: 1px;
+}
+
+/* ==================== MENU DE NAVEGAÇÃO ==================== */
+header nav {
+    display: flex;
+    gap: 30px;
+    /* Espaço de 30px entre os links */
+}
+
+header nav a {
+    color: #fff;
+    font-size: 1.05em;
+    text-decoration: none;
+    /* Remove o sublinhado padrão dos links */
+    
+    transition: all 0.3s ease;
+    /* Animação suave de 0.3 segundos em todas as propriedades */
+    
+    font-weight: 500;
+    /* Peso médio */
+    
+    position: relative;
+    /* Necessário para posicionar o ::after */
+    
+    cursor: pointer;
+}
+
+header nav a::after {
+    /* Cria a linha de sublinhado animada */
+    
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    /* 5px abaixo do texto */
+    
+    left: 0;
+    width: 0;
+    /* Começa com largura zero (invisível) */
+    
+    height: 2px;
+    background: #FFF59D;
+    /* Amarelo claro */
+    
+    transition: width 0.3s ease;
+    /* Animação da largura */
+}
+
+header nav a:hover::after {
+    /* Quando passa o mouse por cima */
+    width: 100%;
+    /* A linha cresce até 100% da largura */
+}
+
+header nav a.active::after {
+    /* Link ativo (seção atual) */
+    width: 100%;
+    /* Linha sempre visível */
+}
+
+/* ==================== CONTAINER PRINCIPAL ==================== */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centraliza horizontalmente */
+    
+    padding-top: 120px;
+    /* Espaço no topo para não ficar embaixo do header fixo */
+    
+    position: relative;
+    z-index: 1;
+    /* Fica acima dos elementos decorativos de fundo */
+}
+
+/* ==================== CONTROLE DE SEÇÕES ==================== */
+.section {
+    display: none;
+    /* Todas as seções começam escondidas */
+    
+    animation: fadeIn 0.5s ease;
+    /* Animação de entrada suave de 0.5 segundos */
+    
+    width: 100%;
+}
+
+.section.active {
+    /* Seção que tem a classe "active" */
+    
+    display: flex;
+    /* Fica visível */
+    
+    flex-direction: column;
+    align-items: center;
+}
+
+@keyframes fadeIn {
+    /* Define a animação fadeIn */
+    
+    from {
+        opacity: 0;
+        /* Começa invisível */
+        
+        transform: translateY(20px);
+        /* Começa 20px abaixo */
+    }
+    to {
+        opacity: 1;
+        /* Termina totalmente visível */
+        
+        transform: translateY(0);
+        /* Termina na posição normal */
+    }
+}
+
+/* ==================== SEÇÃO DE DESTAQUE (HERO) ==================== */
+.hero-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.hero-section h1 {
+    font-size: 3em;
+    /* 3 vezes o tamanho da fonte base */
+    
+    color: #2c3e50;
+    /* Azul escuro */
+    
+    margin-bottom: 15px;
+    font-weight: 700;
+    
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+    /* Sombra sutil: 2px direita, 2px baixo, desfoque de 4px, preta com 5% opacidade */
+}
+
+.hero-section p {
+    font-size: 1.3em;
+    color: #546e7a;
+    /* Cinza azulado */
+    
+    font-weight: 400;
+}
+
+/* ==================== SEÇÃO QUEM SOU EU ==================== */
+.about-section {
+    max-width: 900px;
+    /* Largura máxima de 900px (não fica muito largo em telas grandes) */
+    
+    padding: 50px 60px;
+    margin: 30px auto 60px;
+    /* 30px em cima, centralizado horizontalmente (auto), 60px embaixo */
+    
+    background: #FFFFFF;
+    /* Fundo branco */
+    
+    border-radius: 25px;
+    /* Cantos bem arredondados */
+    
+    border: 2px solid #e0e0e0;
+    /* Borda cinza clara de 2px */
+    
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    /* Sombra: 10px abaixo, desfoque de 30px */
+    
+    text-align: center;
+}
+
+.about-section h2 {
+    font-size: 2.5em;
+    color: #2c3e50;
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+.about-section h2 i {
+    /* Ícone dentro do H2 */
+    color: #4CAF50;
+    /* Verde */
+    margin-right: 10px;
+}
+
+.about-text {
+    font-size: 1.1em;
+    color: #546e7a;
+    line-height: 1.9;
+    /* Espaço entre linhas (1.9 = 190% do tamanho da fonte) */
+    
+    text-align: justify;
+    /* Alinha texto nas duas margens */
+    
+    margin-bottom: 25px;
+}
+
+.about-text strong {
+    /* Texto em negrito dentro dos parágrafos */
+    color: #2c3e50;
+    /* Azul escuro (mais escuro que o texto normal) */
+    
+    font-weight: 600;
+}
+
+/* ==================== CAIXA DE DESTAQUE ==================== */
+.about-highlight {
+    background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
+    /* Gradiente de verde clarinho */
+    
+    padding: 30px;
+    border-radius: 15px;
+    margin-top: 40px;
+}
+
+.about-highlight h3 {
+    color: #2E7D32;
+    /* Verde escuro */
+    
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.about-stats {
+    display: flex;
+    justify-content: center;
+    /* Centraliza os cards */
+    
+    gap: 30px;
+    /* Espaço entre os cards */
+    
+    flex-wrap: wrap;
+    /* Se não couber na linha, quebra para baixo */
+    
+    margin-top: 25px;
+}
+
+.stat-item {
+    background: white;
+    padding: 15px 25px;
+    border-radius: 15px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.stat-item i {
+    color: #4CAF50;
+    font-size: 1.3em;
+    margin-right: 10px;
+}
+
+.stat-item span {
+    color: #2E7D32;
+    font-weight: 600;
+    font-size: 1.05em;
+}
+
+/* ==================== CONTAINER DOS PLANOS ==================== */
+.container {
+    max-width: 1200px;
+    padding: 30px;
+    
+    display: grid;
+    /* Usa CSS Grid para layout */
+    
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    /* Cria colunas automáticas: mínimo 320px, máximo 1 fração do espaço disponível */
+    /* auto-fit: ajusta o número de colunas conforme a largura da tela */
+    
+    gap: 30px;
+    /* Espaço entre os cards */
+    
+    margin-bottom: 60px;
+    width: 100%;
+}
+
+/* ==================== CARDS DOS PLANOS ==================== */
+.plan {
+    background: #FFFFFF;
+    padding: 35px 30px;
+    border-radius: 25px;
+    border: 2px solid #e0e0e0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    
+    transition: all 0.4s ease;
+    /* Animação suave de 0.4 segundos */
+    
+    position: relative;
+    overflow: hidden;
+    /* Esconde o que sair dos limites do card */
+}
+
+.plan::before {
+    /* Barra colorida no topo do card */
+    
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    
+    background: linear-gradient(90deg, #4CAF50, #2196F3);
+    /* Gradiente horizontal: verde para azul */
+}
+
+.plan:hover {
+    /* Quando passa o mouse sobre o card */
+    
+    transform: translateY(-10px);
+    /* Levanta 10px */
+    
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    /* Sombra maior */
+    
+    border-color: #4CAF50;
+    /* Borda fica verde */
+}
+
+/* ==================== PLANO EM DESTAQUE (COR DIFERENTE) ==================== */
+.plan.featured {
+    /* Card do plano trimestral com fundo verde claro */
+    
+    background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+    /* Gradiente verde clarinho */
+    
+    border: 3px solid #4CAF50;
+    /* Borda verde mais grossa */
+}
+
+.plan.featured::before {
+    /* Barra no topo fica verde sólido */
+    background: #4CAF50;
+    height: 5px;
+}
+
+.plan.featured h3 {
+    /* Título em verde */
+    color: #2E7D32;
+}
+
+.plan.featured .price {
+    /* Preço em verde escuro */
+    color: #2E7D32;
+}
+
+.plan-icon {
+    width: 70px;
+    height: 70px;
+    
+    background: linear-gradient(135deg, #4CAF50, #66BB6A);
+    /* Círculo com gradiente verde */
+    
+    border-radius: 50%;
+    /* 50% = círculo perfeito */
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Centraliza o ícone */
+    
+    margin: 0 auto 20px;
+    /* Centraliza horizontalmente, 20px embaixo */
+    
+    font-size: 2em;
+    color: white;
+    
+    box-shadow: 0 5px 20px rgba(76, 175, 80, 0.25);
+    /* Sombra verde ao redor */
+}
+
+.plan h3 {
+    font-size: 1.9em;
+    margin-bottom: 15px;
+    color: #2c3e50;
+    font-weight: 700;
+    text-align: center;
+}
+
+.price {
+    font-size: 2.2em;
+    font-weight: 700;
+    margin: 20px 0;
+    color: #2c3e50;
+    text-align: center;
+}
+
+.price-detail {
+    font-size: 0.5em;
+    /* 50% do tamanho do preço principal */
+    
+    color: #757575;
+    /* Cinza médio */
+    
+    font-weight: 400;
+    display: block;
+    /* Quebra para nova linha */
+    
+    margin-top: 5px;
+}
+
+.features {
+    list-style: none;
+    /* Remove os bullets padrão da lista */
+    
+    margin-top: 25px;
+}
+
+.features li {
+    padding: 12px 0;
+    
+    display: flex;
+    align-items: center;
+    /* Alinha ícone e texto no centro verticalmente */
+    
+    gap: 15px;
+    /* Espaço entre ícone e texto */
+    
+    font-size: 1.05em;
+    color: #546e7a;
+}
+
+.features li i {
+    /* Ícone de check */
+    color: #4CAF50;
+    font-size: 1.2em;
+    min-width: 20px;
+    /* Garante largura mínima para alinhamento */
+}
+
+/* ==================== RODAPÉ GOOGLE MEET ==================== */
+.footer {
+    text-align: center;
+    padding: 40px 30px;
+    margin: 30px auto 60px;
+    
+    background: #FFFFFF;
+    border-radius: 20px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+    
+    max-width: 600px;
+    /* Largura máxima */
+    
+    position: relative;
+    z-index: 1;
+    border: 2px solid #e0e0e0;
+}
+
+.footer .meet-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.footer .meet-icon {
+    width: 50px;
+    height: 50px;
+    
+    background: linear-gradient(135deg, #2196F3, #42A5F5);
+    /* Gradiente azul */
+    
+    border-radius: 12px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    font-size: 1.5em;
+    color: white;
+    
+    box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+    /* Sombra azul */
+}
+
+.footer h3 {
+    color: #2c3e50;
+    font-size: 1.5em;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.footer p {
+    color: #546e7a;
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+.footer .contact-info {
+    margin-top: 20px;
+    color: #546e7a;
+    font-size: 1.05em;
+    font-weight: 500;
+}
+
+.footer .contact-info i {
+    color: #4CAF50;
+    margin-right: 8px;
+}
+
+/* ==================== BOTÃO WHATSAPP FLUTUANTE ==================== */
+.whatsapp-button {
+    position: fixed;
+    /* Fica fixo na tela mesmo ao rolar */
+    
+    bottom: 30px;
+    right: 30px;
+    /* 30px do canto inferior direito */
+    
+    z-index: 999;
+    /* Fica acima de quase tudo */
+    
+    background: #25D366;
+    /* Verde do WhatsApp */
+    
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    /* Círculo perfeito */
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+    /* Sombra verde */
+    
+    transition: all 0.3s ease;
+    
+    animation: pulse 2s infinite;
+    /* Animação "pulse" que repete infinitamente a cada 2 segundos */
+    
+    text-decoration: none;
+    border: none;
+}
+
+@keyframes pulse {
+    /* Animação de pulsação */
+    
+    0%, 100% {
+        transform: scale(1);
+        /* Tamanho normal */
+        
+        box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+    }
+    50% {
+        transform: scale(1.05);
+        /* Aumenta 5% */
+        
+        box-shadow: 0 8px 35px rgba(37, 211, 102, 0.6);
+        /* Sombra mais forte */
+    }
+}
+
+.whatsapp-button:hover {
+    /* Quando passa o mouse */
+    
+    transform: scale(1.15);
+    /* Aumenta 15% */
+    
+    box-shadow: 0 12px 35px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-button i {
+    color: white;
+    font-size: 38px;
+    line-height: 1;
+}
+
+/* ==================== RESPONSIVIDADE: CELULARES E TABLETS ==================== */
+@media (max-width: 768px) {
+    /* Aplica estes estilos quando a largura da tela for no máximo 768px */
+    
+    header {
+        flex-direction: column;
+        /* Logo e menu um embaixo do outro */
+        
+        padding: 15px 20px;
+        gap: 15px;
+    }
+
+    .logo {
+        gap: 12px;
+    }
+
+    .logo-icon {
+        width: 45px;
+        height: 45px;
+    }
+
+    .logo-icon::before {
+        font-size: 1.2em;
+    }
+
+    .logo-text .name {
+        font-size: 1.2em;
+    }
+
+    .logo-text .subtitle {
+        font-size: 0.8em;
+    }
+
+    header nav {
+        gap: 15px;
+    }
+
+    .hero-section h1 {
+        font-size: 2em;
+        /* Título menor em telas pequenas */
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+        /* Uma coluna só (cards um embaixo do outro) */
+        
+        padding: 20px;
+    }
+
+    .about-section {
+        margin: 20px;
+        padding: 30px 25px;
+    }
+
+    .about-text {
+        text-align: left;
+        /* Alinha à esquerda em vez de justificado */
+        
+        font-size: 1.05em;
+    }
+
+    .about-stats {
+        flex-direction: column;
+        /* Cards de estatísticas um embaixo do outro */
+        
+        gap: 15px;
+    }
+
+    body::after {
+        /* Emojis de fundo menores */
+        font-size: 4em;
+        letter-spacing: 80px;
+        line-height: 150px;
+    }
+
+    .footer {
+        margin: 20px;
+    }
+}
