@@ -204,6 +204,15 @@ header {
     letter-spacing: 1px;
 }
 
+.logo-text .crn {
+    font-size: 0.75em;
+    font-weight: 400;
+    opacity: 0.85;
+    letter-spacing: 1px;
+    margin-top: 2px;
+}
+
+
 /* ==================== MENU DE NAVEGAÇÃO ==================== */
 header nav {
     display: flex;
