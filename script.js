@@ -1,25 +1,20 @@
 // ==================== FUNÇÃO PARA TROCAR DE SEÇÃO ====================
 function showSection(sectionId) {
-    // Esconde todas as seções
     document.querySelectorAll('.section').forEach(section => {
         section.classList.remove('active');
     });
 
-    // Desmarca todos os links do menu
     document.querySelectorAll('header nav a').forEach(link => {
         link.classList.remove('active');
     });
 
-    // Mostra a seção clicada
     document.getElementById(sectionId).classList.add('active');
 
-    // Marca o link ativo
     const linkClicado = document.querySelector(`header nav a[onclick*="${sectionId}"]`);
     if (linkClicado) {
         linkClicado.classList.add('active');
     }
 
-    // Rola a página para o topo
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -69,20 +64,16 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Atualiza a visualização das etapas
     function updateStep() {
-        // Esconde todas as etapas
         steps.forEach(step => step.classList.remove('active'));
         
-        // Mostra etapa atual
         const currentStepElement = document.querySelector(`.form-step[data-step="${currentStep}"]`);
         if (currentStepElement) {
             currentStepElement.classList.add('active');
         }
         
-        // Atualiza barra de progresso
         const progress = (currentStep / totalSteps) * 100;
         progressFill.style.width = progress + '%';
         
-        // Atualiza indicadores de etapa
         progressSteps.forEach((step, index) => {
             const stepNumber = index + 1;
             step.classList.remove('active', 'completed');
@@ -94,7 +85,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Controla botões
         btnPrev.style.display = currentStep === 1 ? 'none' : 'flex';
         
         if (currentStep === totalSteps) {
@@ -105,7 +95,6 @@ document.addEventListener('DOMContentLoaded', function() {
             btnSubmit.style.display = 'none';
         }
         
-        // Rola para o topo do formulário
         const formSection = document.querySelector('.form-section');
         if (formSection) {
             formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -155,35 +144,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Envio do formulário
+    // Envio do formulário - SEM BLOQUEAR (igual da igreja)
     if (form) {
         form.addEventListener('submit', function(e) {
+            // Valida apenas a última etapa antes de enviar
             if (!validateCurrentStep()) {
                 e.preventDefault();
                 return;
             }
             
-            // Previne o envio padrão para mostrar mensagem
-            e.preventDefault();
-            
-            // Aqui você pode fazer o envio real via fetch/AJAX
-            // Por enquanto, vamos simular:
-            
-            const formSuccess = document.getElementById('formSuccess');
-            if (formSuccess) {
-                formSuccess.style.display = 'block';
-            }
-            
-            // Volta para a seção de planos após 2 segundos
-            setTimeout(function() {
-                showSection('planos');
-                form.reset();
-                currentStep = 1;
-                updateStep();
-                if (formSuccess) {
-                    formSuccess.style.display = 'none';
-                }
-            }, 2000);
+            // NÃO BLOQUEIA O ENVIO! Deixa o FormSubmit funcionar!
+            // O formulário será enviado normalmente
         });
     }
     
