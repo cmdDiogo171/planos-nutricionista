@@ -1,310 +1,430 @@
 <!DOCTYPE html>
-<!-- Declara que este é um documento HTML5 -->
-
-
 <html lang="pt-BR">
-<!-- Inicia o HTML e define o idioma como português do Brasil -->
-
 
 <head>
-    <!-- ÁREA DE CONFIGURAÇÕES DO SITE (não aparece na tela) -->
-    
     <meta charset="UTF-8">
-    <!-- Define a codificação de caracteres para permitir acentos (á, ç, ã, etc) -->
-    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Torna o site responsivo: adapta a largura para celular/tablet/desktop -->
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Importa a biblioteca Font Awesome: fornece os ícones (check, whatsapp, video, etc) -->
-    
     <link rel="stylesheet" href="style.css">
-    <!-- Conecta o arquivo de estilos CSS (cores, fontes, layout) -->
-    
     <title>Planos Nutricionista - Mayara Ribeiro</title>
-    <!-- Título que aparece na aba do navegador -->
 </head>
 
-
 <body>
-    <!-- INÍCIO DO CONTEÚDO VISÍVEL DO SITE -->
-
-
     <!-- ==================== CABEÇALHO FIXO NO TOPO ==================== -->
     <header>
-        <!-- Barra verde que fica sempre no topo da página -->
-        
         <div class="logo" onclick="showSection('planos')">
-            <!-- Logo clicável: ao clicar volta para a seção de planos -->
-            
             <div class="logo-icon"></div>
-            <!-- Caixa vazia: o CSS adiciona as letras "MR" automaticamente -->
-            
             <div class="logo-text">
-                <!-- Container para o texto da logo -->
-                
                 <div class="name">Mayara Ribeiro</div>
-                <!-- Nome da nutricionista (fonte grande e negrito) -->
-                
                 <div class="subtitle">NUTRICIONISTA</div>
-                <!-- Subtítulo com a profissão (fonte menor) -->
                 <div class="crn">CRN: 26100134/P</div>
             </div>
         </div>
         
         <nav>
-            <!-- Menu de navegação com os links -->
-            
             <a onclick="showSection('planos')" class="active">Planos</a>
-            <!-- Link "Planos": class="active" marca como ativo (sublinhado amarelo) -->
-            
+            <a onclick="showSection('formulario')">Preencher Formulário</a>
             <a onclick="showSection('quem-sou-eu')">Quem sou eu</a>
-            <!-- Link "Quem sou eu": ao clicar mostra a seção de biografia -->
         </nav>
     </header>
 
-
-    <!-- ==================== BOTÃO WHATSAPP FLUTUANTE ==================== -->
-    <a href="https://api.whatsapp.com/send?phone=5521990122092&text=Ol%C3%A1%2C%20gostaria%20de%20selecionar%20um%20dos%20planos" 
-       target="_blank" 
-       class="whatsapp-button">
-        <!-- Botão verde fixo no canto inferior direito -->
-        <!-- href: abre o WhatsApp com número e mensagem pré-pronta -->
-        <!-- target="_blank": abre em nova aba -->
-        
+    <!-- ==================== BOTÃO WHATSAPP FLUTUANTE (APENAS DÚVIDAS) ==================== -->
+    <a href="#" target="_blank" class="whatsapp-button">
         <i class="fab fa-whatsapp"></i>
-        <!-- Ícone do WhatsApp do Font Awesome -->
     </a>
 
+    <div class="main-content">
+        <!-- ==================== SEÇÃO 1: PLANOS NUTRICIONAIS ==================== -->
+        <div id="planos" class="section active">
+            <div class="hero-section">
+                <h1>Planos Nutricionais</h1>
+                <p>Transforme sua saúde com acompanhamento profissional</p>
+            </div>
 
-        <div class="main-content">
-            <!-- Container principal: agrupa todo o conteúdo abaixo do header -->
-            
-            <!-- ==================== SEÇÃO 1: PLANOS NUTRICIONAIS ==================== -->
-            <div id="planos" class="section active">
-                <!-- id="planos": identificador único para JavaScript mostrar/esconder -->
-                <!-- class="active": esta seção começa visível -->
-                
-                <div class="hero-section">
-                    <!-- Seção de destaque no topo: título + subtítulo -->
+            <div class="container">
+                <!-- ========== CARD 1: PLANO MENSAL ========== -->
+                <div class="plan" data-plano="Mensal">
+                    <div class="plan-icon">
+                        <i class="fas fa-apple-alt"></i>
+                    </div>
                     
-                    <h1>Planos Nutricionais</h1>
-                    <!-- Título principal da página (H1 é o mais importante para SEO) -->
+                    <h3>Plano Mensal</h3>
                     
-                    <p>Transforme sua saúde com acompanhamento profissional</p>
-                    <!-- Subtítulo descritivo -->
+                    <div class="price">
+                        R$150
+                    </div>
+                    
+                    <ul class="features">
+                        <li><i class="fas fa-check-circle"></i> 1 Consulta Completa</li>
+                        <li><i class="fas fa-check-circle"></i> 1 Retorno Detalhado</li>
+                        <li><i class="fas fa-check-circle"></i> Plano Alimentar Personalizado</li>
+                        <li class="unavailable"><i class="fas fa-times-circle"></i> Revisão do plano alimentar</li>
+                        <li class="unavailable"><i class="fas fa-times-circle"></i> Reavaliações Periódicas</li>
+                        <li class="unavailable"><i class="fas fa-times-circle"></i> Material Exclusivo</li>
+                        <li class="unavailable"><i class="fas fa-times-circle"></i> Suporte WhatsApp horário comercial</li>
+                    </ul>
+                    
+                    <a href="#" class="btn-contratar" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        Quero este plano!
+                    </a>
                 </div>
 
+                <!-- ========== CARD 2: PLANO TRIMESTRAL (DESTAQUE) ========== -->
+                <div class="plan featured" data-plano="Trimestral">
+                    <div class="plan-icon">
+                        <i class="fas fa-apple-alt"></i>
+                    </div>
+                    
+                    <h3>Plano Trimestral</h3>
+                    
+                    <div class="price">
+                        R$420
+                        <span class="price-detail">à vista ou 3x R$150</span>
+                    </div>
+                    
+                    <ul class="features">
+                        <li><i class="fas fa-check-circle"></i> 2 Consultas Completas</li>
+                        <li><i class="fas fa-check-circle"></i> 3 Retornos Detalhados</li>
+                        <li><i class="fas fa-check-circle"></i> Plano Alimentar Personalizado</li>
+                        <li><i class="fas fa-check-circle"></i> Revisão do plano alimentar</li>
+                        <li><i class="fas fa-check-circle"></i> Suporte WhatsApp horário comercial</li>
+                        <li class="unavailable"><i class="fas fa-times-circle"></i> Reavaliações Periódicas</li>
+                        <li class="unavailable"><i class="fas fa-times-circle"></i> Material Exclusivo</li>
+                    </ul>
+                    
+                    <a href="#" class="btn-contratar" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        Quero este plano!
+                    </a>
+                </div>
 
-                <div class="container">
-        <!-- ========== CARD 1: PLANO MENSAL ========== -->
-        <div class="plan">
-            <div class="plan-icon">
-                <i class="fas fa-apple-alt"></i>
+                <!-- ========== CARD 3: PLANO SEMESTRAL ========== -->
+                <div class="plan" data-plano="Semestral">
+                    <div class="plan-icon">
+                        <i class="fas fa-apple-alt"></i>
+                    </div>
+                    
+                    <h3>Plano Semestral</h3>
+                    
+                    <div class="price">
+                        R$780
+                        <span class="price-detail">à vista ou 6x R$135</span>
+                    </div>
+                    
+                    <ul class="features">
+                        <li><i class="fas fa-check-circle"></i> 5 Consultas Completas</li>
+                        <li><i class="fas fa-check-circle"></i> 6 Retornos Detalhados</li>
+                        <li><i class="fas fa-check-circle"></i> Plano Alimentar Personalizado</li>
+                        <li><i class="fas fa-check-circle"></i> Revisão do plano alimentar</li>
+                        <li><i class="fas fa-check-circle"></i> Reavaliações Periódicas</li>
+                        <li><i class="fas fa-check-circle"></i> Material Exclusivo</li>
+                        <li><i class="fas fa-check-circle"></i> Suporte WhatsApp horário comercial</li>
+                    </ul>
+                    
+                    <a href="#" class="btn-contratar" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        Quero este plano!
+                    </a>
+                </div>
             </div>
-            
-            <h3>Plano Mensal</h3>
-            
-            <div class="price">
-                R$150
-            </div>
-            
-            <ul class="features">
-                <!-- BENEFÍCIOS INCLUÍDOS -->
-                <li><i class="fas fa-check-circle"></i> 1 Consulta Completa</li>
-                <li><i class="fas fa-check-circle"></i> 1 Retorno Detalhado</li>
-                <li><i class="fas fa-check-circle"></i> Plano Alimentar Personalizado</li>
-                
-                <!-- BENEFÍCIOS NÃO INCLUÍDOS (riscados e transparentes) -->
-                <li class="unavailable"><i class="fas fa-times-circle"></i> Revisão do plano alimentar</li>
-                <li class="unavailable"><i class="fas fa-times-circle"></i> Reavaliações Periódicas</li>
-                <li class="unavailable"><i class="fas fa-times-circle"></i> Material Exclusivo</li>
-                <li class="unavailable"><i class="fas fa-times-circle"></i> Suporte WhatsApp horário comercial</li>
-            </ul>
-        </div>
-
-
-        <!-- ========== CARD 2: PLANO TRIMESTRAL (DESTAQUE) ========== -->
-        <div class="plan featured">
-            <div class="plan-icon">
-                <i class="fas fa-apple-alt"></i>
-            </div>
-            
-            <h3>Plano Trimestral</h3>
-            
-            <div class="price">
-                R$420
-                <span class="price-detail">à vista ou 3x R$150</span>
-            </div>
-            
-            <ul class="features">
-                <!-- BENEFÍCIOS INCLUÍDOS -->
-                <li><i class="fas fa-check-circle"></i> 2 Consultas Completas</li>
-                <li><i class="fas fa-check-circle"></i> 3 Retornos Detalhados</li>
-                <li><i class="fas fa-check-circle"></i> Plano Alimentar Personalizado</li>
-                <li><i class="fas fa-check-circle"></i> Revisão do plano alimentar</li>
-                <li><i class="fas fa-check-circle"></i> Suporte WhatsApp horário comercial</li>
-                
-                <!-- BENEFÍCIOS NÃO INCLUÍDOS -->
-                <li class="unavailable"><i class="fas fa-times-circle"></i> Reavaliações Periódicas</li>
-                <li class="unavailable"><i class="fas fa-times-circle"></i> Material Exclusivo</li>
-            </ul>
-        </div>
-
-
-        <!-- ========== CARD 3: PLANO SEMESTRAL ========== -->
-        <div class="plan">
-            <div class="plan-icon">
-                <i class="fas fa-apple-alt"></i>
-            </div>
-            
-            <h3>Plano Semestral</h3>
-            
-            <div class="price">
-                R$780
-                <span class="price-detail">à vista ou 6x R$135</span>
-            </div>
-            
-            <ul class="features">
-                <!-- TODOS OS BENEFÍCIOS INCLUÍDOS -->
-                <li><i class="fas fa-check-circle"></i> 5 Consultas Completas</li>
-                <li><i class="fas fa-check-circle"></i> 6 Retornos Detalhados</li>
-                <li><i class="fas fa-check-circle"></i> Plano Alimentar Personalizado</li>
-                <li><i class="fas fa-check-circle"></i> Revisão do plano alimentar</li>
-                <li><i class="fas fa-check-circle"></i> Reavaliações Periódicas</li>
-                <li><i class="fas fa-check-circle"></i> Material Exclusivo</li>
-                <li><i class="fas fa-check-circle"></i> Suporte WhatsApp horário comercial</li>
-            </ul>
-        </div>
-    </div>
-
-
 
             <!-- ========== RODAPÉ: INFORMAÇÕES GOOGLE MEET ==================== -->
             <div class="footer">
-                <!-- Seção de informações sobre atendimento online -->
-                
                 <div class="meet-info">
-                    <!-- Container do ícone + título -->
-                    
                     <div class="meet-icon">
-                        <!-- Quadrado azul com ícone de câmera -->
                         <i class="fas fa-video"></i>
                     </div>
-                    
                     <h3>Atendimento 100% Online</h3>
-                    <!-- Título do serviço -->
                 </div>
                 
                 <p>Todas as consultas são realizadas por <strong>Google Meet</strong> no conforto da sua casa</p>
-                <!-- Descrição (strong deixa "Google Meet" em negrito) -->
                 
                 <div class="contact-info">
-                    <!-- Informação de contato -->
                     <i class="fas fa-phone-alt"></i> Entre em contato para mais informações
                 </div>
                 
-                <!-- NÚMERO DE TELEFONE CLICÁVEL - DENTRO DO FOOTER -->
                 <a href="tel:+5521990122092" class="phone-number">
                     <i class="fas fa-phone"></i>
                     (21) 99012-2092
                 </a>
             </div>
         </div>
-        <!-- FIM DA SEÇÃO PLANOS -->
-      
 
-
-        <!-- FIM DA SEÇÃO PLANOS -->
-
-
-        <!-- ==================== SEÇÃO 2: QUEM SOU EU ==================== -->
-        <div id="quem-sou-eu" class="section">
-            <!-- Esta seção começa ESCONDIDA (sem class="active") -->
-            <!-- JavaScript adiciona "active" quando clica no menu -->
-            
-            <div class="about-section">
-                <!-- Container da biografia -->
-                
-                <h2><i class="fas fa-user-md"></i> Quem sou eu</h2>
-                <!-- Título com ícone de médico -->
-                
-                <!-- ========== PARÁGRAFO 1 ========== -->
-                <div class="about-text">
-                    <p>Sou <strong>Mayara Ribeiro</strong>, nutricionista formada pela <strong>Universidade do Estado do Rio de Janeiro (UERJ)</strong>, comprometida em promover saúde e bem-estar por meio de uma alimentação prática, acessível e individualizada. Acredito em hábitos sustentáveis, construídos sem restrições extremas e sempre respeitando a rotina, a cultura alimentar e as necessidades de cada pessoa.</p>
-                    <!-- strong: destaca palavras importantes em negrito -->
+        <!-- ==================== SEÇÃO 2: FORMULÁRIO DE ANAMNESE ==================== -->
+        <div id="formulario" class="section">
+            <div class="form-section">
+                <div class="form-header">
+                    <div class="form-icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <h2>Formulário de Anamnese</h2>
+                    <p>Preencha os dados abaixo para iniciarmos seu acompanhamento nutricional personalizado</p>
                 </div>
 
+                <!-- BARRA DE PROGRESSO -->
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-steps">
+                        <div class="step active" data-step="1">
+                            <div class="step-number">1</div>
+                            <span>Dados Pessoais</span>
+                        </div>
+                        <div class="step" data-step="2">
+                            <div class="step-number">2</div>
+                            <span>Saúde e Rotina</span>
+                        </div>
+                        <div class="step" data-step="3">
+                            <div class="step-number">3</div>
+                            <span>Alimentação</span>
+                        </div>
+                        <div class="step" data-step="4">
+                            <div class="step-number">4</div>
+                            <span>Expectativas</span>
+                        </div>
+                    </div>
+                </div>
 
-                <!-- ========== PARÁGRAFO 2 ========== -->
+                <form action="https://formsubmit.co/diogo.ribeiro_@live.com" method="POST" class="contact-form" id="multiStepForm">
+                    <!-- CONFIGURAÇÕES DO FORMSUBMIT -->
+                    <input type="hidden" name="_subject" value="Nova Anamnese - Mayara Ribeiro Nutricionista">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+
+                    <!-- ========== ETAPA 1: DADOS PESSOAIS ========== -->
+                    <div class="form-step active" data-step="1">
+                        <h3 class="step-title"><i class="fas fa-user"></i> Dados Pessoais</h3>
+                        
+                        <div class="form-group">
+                            <label for="nome">Nome completo *</label>
+                            <input type="text" id="nome" name="Nome Completo" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="dataNascimento">Data de nascimento *</label>
+                                <input type="date" id="dataNascimento" name="Data de Nascimento" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="sexo">Sexo *</label>
+                                <select id="sexo" name="Sexo" required>
+                                    <option value="">Selecione</option>
+                                    <option value="Feminino">Feminino</option>
+                                    <option value="Masculino">Masculino</option>
+                                    <option value="Outro">Outro</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="peso">Peso (kg) *</label>
+                                <input type="number" id="peso" name="Peso (kg)" step="0.1" required placeholder="Ex: 70.5">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="altura">Altura (m) *</label>
+                                <input type="number" id="altura" name="Altura (m)" step="0.01" required placeholder="Ex: 1.75">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="telefone">Telefone de contato *</label>
+                            <input type="tel" id="telefone" name="Telefone" required placeholder="(21) 99999-9999">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">E-mail *</label>
+                            <input type="email" id="email" name="E-mail" required placeholder="seu@email.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="profissao">Profissão *</label>
+                            <input type="text" id="profissao" name="Profissão" required placeholder="Ex: Professora, Vendedor, etc">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="objetivos">Objetivos *</label>
+                            <textarea id="objetivos" name="Objetivos" required rows="3" placeholder="Descreva seus objetivos com o acompanhamento nutricional"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- ========== ETAPA 2: SAÚDE E ROTINA ========== -->
+                    <div class="form-step" data-step="2">
+                        <h3 class="step-title"><i class="fas fa-heartbeat"></i> Saúde e Rotina</h3>
+
+                        <div class="form-group">
+                            <label for="compras">Quem costuma realizar as compras de mercado na sua casa? *</label>
+                            <input type="text" id="compras" name="Responsável pelas Compras" required placeholder="Ex: Eu mesmo(a), minha mãe, etc">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="refeicoes">Quem é responsável por elaborar as refeições na sua casa? *</label>
+                            <input type="text" id="refeicoes" name="Responsável pelas Refeições" required placeholder="Ex: Eu mesmo(a), meu pai, etc">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="atividadeFisica">Realiza alguma atividade física? Qual? Quantas vezes na semana? *</label>
+                            <textarea id="atividadeFisica" name="Atividade Física" required rows="2" placeholder="Ex: Musculação 3x por semana, Não pratico, etc"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="fumaBebe">Fuma ou bebe? *</label>
+                            <textarea id="fumaBebe" name="Fuma ou Bebe" required rows="2" placeholder="Ex: Não fumo, bebo socialmente, etc"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="diagnostico">Há algum diagnóstico confirmado ou alguma condição de saúde em investigação? Qual? *</label>
+                            <textarea id="diagnostico" name="Diagnósticos" required rows="3" placeholder="Ex: Diabetes tipo 2, Hipotireoidismo, Nenhum, etc"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="historico">Possui histórico de doenças familiares? Qual? *</label>
+                            <textarea id="historico" name="Histórico Familiar" required rows="2" placeholder="Ex: Mãe hipertensa, pai diabético, nenhum, etc"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cirurgia">Já realizou alguma cirurgia? *</label>
+                            <textarea id="cirurgia" name="Cirurgias" required rows="2" placeholder="Ex: Apendicite em 2018, Nenhuma, etc"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="medicamentos">Utiliza medicamentos ou suplementos? Quais? *</label>
+                            <textarea id="medicamentos" name="Medicamentos e Suplementos" required rows="3" placeholder="Ex: Omeprazol 20mg, Vitamina D, Nenhum, etc"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- ========== ETAPA 3: ALIMENTAÇÃO ========== -->
+                    <div class="form-step" data-step="3">
+                        <h3 class="step-title"><i class="fas fa-utensils"></i> Alimentação</h3>
+
+                        <div class="form-group">
+                            <label for="alergia">Possui intolerância ou alergia alimentar? *</label>
+                            <textarea id="alergia" name="Alergias e Intolerâncias" required rows="3" placeholder="Ex: Intolerância à lactose, Alergia a camarão, Nenhuma, etc"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dificuldadeAlimento">Possui dificuldade em consumir algum alimento ou preparação culinária? *</label>
+                            <textarea id="dificuldadeAlimento" name="Dificuldades com Alimentos" required rows="3" placeholder="Ex: Não gosto de peixe, tenho enjoo com ovo, etc"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exclusao">Existe algum alimento que você não gostaria que estivesse no seu plano alimentar? *</label>
+                            <textarea id="exclusao" name="Alimentos a Excluir" required rows="3" placeholder="Ex: Beterraba, Chuchu, Nenhum, etc"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="favorito">Qual sua comida favorita? *</label>
+                            <input type="text" id="favorito" name="Comida Favorita" required placeholder="Ex: Lasanha, Strogonoff, etc">
+                        </div>
+                    </div>
+
+                    <!-- ========== ETAPA 4: EXPECTATIVAS ========== -->
+                    <div class="form-step" data-step="4">
+                        <h3 class="step-title"><i class="fas fa-star"></i> Expectativas</h3>
+
+                        <div class="form-group">
+                            <label for="dificuldades">Pensando na sua rotina, você possui dificuldades em seguir uma alimentação saudável? Se sim, fale brevemente. *</label>
+                            <textarea id="dificuldades" name="Dificuldades com Alimentação Saudável" required rows="4" placeholder="Ex: Falta de tempo para cozinhar, viajo muito a trabalho, etc"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="experiencia">Possui experiências anteriores com acompanhamento nutricional? *</label>
+                            <textarea id="experiencia" name="Experiência Anterior com Nutricionista" required rows="3" placeholder="Ex: Sim, fiz acompanhamento em 2020, Não, primeira vez, etc"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="expectativas">Quais são as suas expectativas em relação ao meu atendimento? *</label>
+                            <textarea id="expectativas" name="Expectativas do Atendimento" required rows="4" placeholder="Conte o que você espera alcançar com o acompanhamento nutricional"></textarea>
+                        </div>
+
+                        <div class="form-success" id="formSuccess">
+                            <i class="fas fa-check-circle"></i>
+                            <p>Formulário enviado com sucesso!</p>
+                        </div>
+                    </div>
+
+                    <!-- BOTÕES DE NAVEGAÇÃO -->
+                    <div class="form-navigation">
+                        <button type="button" class="btn-prev" id="btnPrev">
+                            <i class="fas fa-arrow-left"></i> Voltar
+                        </button>
+                        
+                        <button type="button" class="btn-next" id="btnNext">
+                            Próximo <i class="fas fa-arrow-right"></i>
+                        </button>
+                        
+                        <button type="submit" class="btn-submit" id="btnSubmit" style="display: none;">
+                            <i class="fas fa-paper-plane"></i> Enviar Formulário
+                        </button>
+                    </div>
+
+                    <p class="form-info">
+                        <i class="fas fa-info-circle"></i> 
+                        Todos os campos são obrigatórios
+                    </p>
+                </form>
+            </div>
+        </div>
+
+        <!-- ==================== SEÇÃO 3: QUEM SOU EU ==================== -->
+        <div id="quem-sou-eu" class="section">
+            <div class="about-section">
+                <h2><i class="fas fa-user-md"></i> Quem sou eu</h2>
+                
+                <div class="about-text">
+                    <p>Sou <strong>Mayara Ribeiro</strong>, nutricionista formada pela <strong>Universidade do Estado do Rio de Janeiro (UERJ)</strong>, comprometida em promover saúde e bem-estar por meio de uma alimentação prática, acessível e individualizada. Atualmente, sou <strong>residente em Nutrição Clínica pelo Hospital Universitário Pedro Ernesto (HUPE/UERJ)</strong>, onde atuo como <strong>nutricionista concursada</strong>. Acredito em hábitos sustentáveis, construídos sem restrições extremas e sempre respeitando a rotina, a cultura alimentar e as necessidades de cada pessoa.</p>
+                </div>
+
                 <div class="about-text">
                     <p>Atualmente, atuo como <strong>residente em Nutrição Clínica no Hospital Universitário Pedro Ernesto (HUPE/UERJ)</strong>, cargo conquistado por meio de <strong>concurso público</strong>, onde desenvolvo prática clínica avançada no atendimento hospitalar a pacientes com diversas condições de saúde. Minha trajetória reúne experiências diversas e complementares dentro da Nutrição. Participei da <strong>Inserção de Práticas Promotoras de Alimentação Saudável no ambulatório de cardiologia da Policlínica Piquet Carneiro</strong>, contribuindo para a orientação de pacientes em contexto cardiometabólico. Atuei também na <strong>vigilância sanitária pelo IVISA-Rio</strong>, no <strong>restaurante universitário da UERJ</strong> na área de alimentação coletiva e na <strong>Clínica da Família Izabel dos Santos</strong>, fortalecendo minha vivência em saúde pública e cuidado integral.</p>
                 </div>
 
-
-                <!-- ========== PARÁGRAFO 3 ========== -->
                 <div class="about-text">
                     <p>Durante dois anos integrei o <strong>laboratório LEING da UERJ</strong>, desenvolvendo iniciação científica em nutrição clínica com foco em saúde hepática. Nesse período, conduzi uma pesquisa que investigou o impacto do consumo de óleo de palma interesterificado no desenvolvimento da doença hepática gordurosa metabólica — estudo relevante para compreender os efeitos da substituição da gordura trans por esse tipo de óleo. Esse trabalho resultou na <strong>publicação de três artigos científicos</strong>.</p>
                 </div>
 
-
-                <!-- ========== PARÁGRAFO 4 ========== -->
                 <div class="about-text">
                     <p>Minha prática é guiada por evidências, sensibilidade e respeito à individualidade. Meu objetivo é ajudar você a construir uma relação mais equilibrada, consistente e prazerosa com a alimentação, alcançando resultados reais e duradouros.</p>
                 </div>
 
-
-                <!-- ========== CAIXA DE DESTAQUE: ESTATÍSTICAS ========== -->
                 <div class="about-highlight">
-                    <!-- Caixa verde clara com informações resumidas -->
-                    
                     <h3>Formação e Experiência</h3>
                     
                     <div class="about-stats">
-                        <!-- Container dos cards de estatísticas -->
-                        
                         <div class="stat-item">
-                            <!-- Card individual (fundo branco) -->
                             <i class="fas fa-graduation-cap"></i>
-                            <!-- Ícone de capelo de formatura -->
                             <span>Nutricionista UERJ</span>
                         </div>
                         
                         <div class="stat-item">
                             <i class="fas fa-user-md"></i>
-                            <!-- Ícone de médico -->
                             <span>Residente HUPE/UERJ</span>
                         </div>
                         
                         <div class="stat-item">
                             <i class="fas fa-microscope"></i>
-                            <!-- Ícone de microscópio -->
                             <span>2 anos de pesquisa científica</span>
                         </div>
                         
                         <div class="stat-item">
                             <i class="fas fa-file-alt"></i>
-                            <!-- Ícone de documento -->
                             <span>3 artigos publicados</span>
                         </div>
                         
                         <div class="stat-item">
                             <i class="fas fa-hospital"></i>
-                            <!-- Ícone de hospital -->
                             <span>5 estágios especializados</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- FIM DA SEÇÃO QUEM SOU EU -->
-
-
     </div>
-    <!-- FIM DO MAIN-CONTENT -->
-
 
     <script src="script.js"></script>
-    <!-- Conecta o arquivo JavaScript: adiciona interatividade (trocar de seção) -->
 </body>
 </html>

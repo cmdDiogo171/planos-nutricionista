@@ -1,59 +1,192 @@
 // ==================== FUNÇÃO PARA TROCAR DE SEÇÃO ====================
 function showSection(sectionId) {
-    // Esta função é chamada quando clica nos links do menu
-    // Recebe como parâmetro o ID da seção que deve ser mostrada
-    // Exemplo: showSection('planos') ou showSection('quem-sou-eu')
-    
-    // ===== PASSO 1: ESCONDER TODAS AS SEÇÕES =====
+    // Esconde todas as seções
     document.querySelectorAll('.section').forEach(section => {
-        // querySelectorAll pega TODOS os elementos com class="section"
-        // forEach executa uma função para cada elemento encontrado
-        
         section.classList.remove('active');
-        // Remove a classe "active" de cada seção
-        // Sem "active", o CSS faz a seção ficar escondida (display: none)
     });
 
-    // ===== PASSO 2: DESMARCAR TODOS OS LINKS DO MENU =====
+    // Desmarca todos os links do menu
     document.querySelectorAll('header nav a').forEach(link => {
-        // Pega todos os links <a> que estão dentro de <header> e <nav>
-        
         link.classList.remove('active');
-        // Remove a classe "active" de cada link
-        // Sem "active", o sublinhado amarelo desaparece
     });
 
-    // ===== PASSO 3: MOSTRAR A SEÇÃO CLICADA =====
+    // Mostra a seção clicada
     document.getElementById(sectionId).classList.add('active');
-    // getElementById busca o elemento pelo ID
-    // Exemplo: se sectionId = 'planos', busca <div id="planos">
-    // classList.add('active') adiciona a classe "active"
-    // Com "active", o CSS faz a seção aparecer (display: flex)
 
-    // ===== PASSO 4: MARCAR O LINK ATIVO =====
-    if (event.target.tagName === 'A') {
-        // event.target = elemento que foi clicado
-        // tagName = tipo da tag HTML
-        // Verifica se o elemento clicado é um link <a>
-        
-        event.target.classList.add('active');
-        // Adiciona "active" no link clicado
-        // O CSS mostra o sublinhado amarelo
+    // Marca o link ativo
+    const linkClicado = document.querySelector(`header nav a[onclick*="${sectionId}"]`);
+    if (linkClicado) {
+        linkClicado.classList.add('active');
     }
 
-    // ===== PASSO 5: ROLAR A PÁGINA PARA O TOPO =====
+    // Rola a página para o topo
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    // scrollTo move a página para uma posição específica
-    // top: 0 = topo da página (posição 0 pixels)
-    // behavior: 'smooth' = rolagem suave (animada)
-    // Se fosse 'auto', pularia instantaneamente
 }
 
-// RESUMO DO FUNCIONAMENTO:
-// 1. Usuário clica em "Planos" ou "Quem sou eu"
-// 2. A função showSection é executada
-// 3. Todas as seções ficam escondidas
-// 4. Todos os links do menu perdem o destaque
-// 5. A seção escolhida aparece
-// 6. O link clicado ganha destaque (sublinhado amarelo)
-// 7. A página rola suavemente para o topo
+// ==================== AGUARDA O DOM CARREGAR ====================
+document.addEventListener('DOMContentLoaded', function() {
+    
+    const numero = '5521990122092';
+    
+    // ========== 1. BOTÃO FLUTUANTE WHATSAPP: APENAS DÚVIDAS ==========
+    const btnWhatsappFlutuante = document.querySelector('.whatsapp-button');
+    if (btnWhatsappFlutuante) {
+        const mensagemDuvida = 'Olá! Poderia me ajudar, tenho dúvidas';
+        btnWhatsappFlutuante.href = `https://api.whatsapp.com/send?phone=${numero}&text=${encodeURIComponent(mensagemDuvida)}`;
+    }
+    
+    // ========== 2. BOTÕES "QUERO ESTE PLANO" NOS CARDS ==========
+    const botoesContratar = document.querySelectorAll('.btn-contratar');
+    
+    botoesContratar.forEach(botao => {
+        botao.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const planoCard = this.closest('.plan');
+            const nomePlano = planoCard.getAttribute('data-plano');
+            
+            const mensagem = `Olá! Quero contratar o Plano ${nomePlano}`;
+            const linkWhatsApp = `https://api.whatsapp.com/send?phone=${numero}&text=${encodeURIComponent(mensagem)}`;
+            
+            window.open(linkWhatsApp, '_blank');
+        });
+    });
+    
+    // ========== 3. FORMULÁRIO MULTI-ETAPAS ==========
+    const form = document.getElementById('multiStepForm');
+    if (!form) return;
+    
+    const steps = document.querySelectorAll('.form-step');
+    const progressFill = document.getElementById('progressFill');
+    const progressSteps = document.querySelectorAll('.step');
+    const btnPrev = document.getElementById('btnPrev');
+    const btnNext = document.getElementById('btnNext');
+    const btnSubmit = document.getElementById('btnSubmit');
+    
+    let currentStep = 1;
+    const totalSteps = steps.length;
+    
+    // Atualiza a visualização das etapas
+    function updateStep() {
+        // Esconde todas as etapas
+        steps.forEach(step => step.classList.remove('active'));
+        
+        // Mostra etapa atual
+        const currentStepElement = document.querySelector(`.form-step[data-step="${currentStep}"]`);
+        if (currentStepElement) {
+            currentStepElement.classList.add('active');
+        }
+        
+        // Atualiza barra de progresso
+        const progress = (currentStep / totalSteps) * 100;
+        progressFill.style.width = progress + '%';
+        
+        // Atualiza indicadores de etapa
+        progressSteps.forEach((step, index) => {
+            const stepNumber = index + 1;
+            step.classList.remove('active', 'completed');
+            
+            if (stepNumber < currentStep) {
+                step.classList.add('completed');
+            } else if (stepNumber === currentStep) {
+                step.classList.add('active');
+            }
+        });
+        
+        // Controla botões
+        btnPrev.style.display = currentStep === 1 ? 'none' : 'flex';
+        
+        if (currentStep === totalSteps) {
+            btnNext.style.display = 'none';
+            btnSubmit.style.display = 'flex';
+        } else {
+            btnNext.style.display = 'flex';
+            btnSubmit.style.display = 'none';
+        }
+        
+        // Rola para o topo do formulário
+        const formSection = document.querySelector('.form-section');
+        if (formSection) {
+            formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+    
+    // Valida campos da etapa atual
+    function validateCurrentStep() {
+        const currentStepElement = document.querySelector(`.form-step[data-step="${currentStep}"]`);
+        const inputs = currentStepElement.querySelectorAll('input[required], select[required], textarea[required]');
+        
+        let isValid = true;
+        
+        inputs.forEach(input => {
+            if (!input.value.trim()) {
+                isValid = false;
+                input.style.borderColor = '#f44336';
+                
+                input.addEventListener('input', function() {
+                    this.style.borderColor = '#e0e0e0';
+                }, { once: true });
+            }
+        });
+        
+        if (!isValid) {
+            alert('Por favor, preencha todos os campos obrigatórios antes de continuar.');
+        }
+        
+        return isValid;
+    }
+    
+    // Botão Próximo
+    if (btnNext) {
+        btnNext.addEventListener('click', function() {
+            if (validateCurrentStep()) {
+                currentStep++;
+                updateStep();
+            }
+        });
+    }
+    
+    // Botão Voltar
+    if (btnPrev) {
+        btnPrev.addEventListener('click', function() {
+            currentStep--;
+            updateStep();
+        });
+    }
+    
+    // Envio do formulário
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            if (!validateCurrentStep()) {
+                e.preventDefault();
+                return;
+            }
+            
+            // Previne o envio padrão para mostrar mensagem
+            e.preventDefault();
+            
+            // Aqui você pode fazer o envio real via fetch/AJAX
+            // Por enquanto, vamos simular:
+            
+            const formSuccess = document.getElementById('formSuccess');
+            if (formSuccess) {
+                formSuccess.style.display = 'block';
+            }
+            
+            // Volta para a seção de planos após 2 segundos
+            setTimeout(function() {
+                showSection('planos');
+                form.reset();
+                currentStep = 1;
+                updateStep();
+                if (formSuccess) {
+                    formSuccess.style.display = 'none';
+                }
+            }, 2000);
+        });
+    }
+    
+    // Inicializa o formulário
+    updateStep();
+});
